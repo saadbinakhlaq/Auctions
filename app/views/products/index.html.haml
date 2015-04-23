@@ -1,23 +1,18 @@
 %h1 Listing products
 
-%table
-  %thead
-    %tr
-      %th Name
-      %th Image
-      %th
-      %th
-      %th
-
-  %tbody
+.row
+  %ul.list-unstyled
     - @products.each do |product|
-      %tr
-        %td= product.name
-        %td= product.image
-        %td= link_to 'Show', product
-        %td= link_to 'Edit', edit_product_path(product)
-        %td= link_to 'Destroy', product, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %li.col-md-3
+        %h2= link_to product.name, product
+        %p
+          = link_to product do
+            = image_tag product.image, height: 200
+        %p
+          = link_to 'Edit', edit_product_path(product)
+          |
+          = link_to 'Destroy', method: :destroy, data: { confirm: 'Are you sure?' }
 
-%br
-
-= link_to 'New Product', new_product_path
+.row
+  %p
+    = link_to 'New Product', new_product_path, class: 'btn btn-primary'
