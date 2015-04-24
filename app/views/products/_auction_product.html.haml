@@ -1,0 +1,7 @@
+- unless @product.has_auction_product?
+  %h2 Put this product to auction
+
+  = form_for [@product, AuctionProduct.new] do |f|
+    %p
+      = f.text_field :value
+      = f.button class: 'btn btn-default'
